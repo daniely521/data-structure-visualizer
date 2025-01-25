@@ -6,6 +6,55 @@
     <title>Data Structure Visualizer</title>
 </head>
 <body>
-    
+    <header>
+        <h1>Data Structures Visualizer</h1>
+    </header>
+    <main>
+        <div id="instructions">Select a data structure to visualize its operations.</div>
+        <button id="array-btn">Array</button>
+        <button id="stack-btn">Stack</button>
+        <button id="queue-btn">Queue</button>
+        <button id="linked-list-btn">Linked List</button>
+        <button id="binary-tree-btn">Binary Tree</button>
+        
+        <div id="visualizations">
+            <div class="visualization" id="array-visualization" style="display: none;">
+                <h2>Array</h2>
+                <div class="array" id="array"></div>
+                <button id="array-add-btn">Add Element</button>
+                <button id="array-remove-btn">Remove Element</button>
+            </div>
+
+            <div class="visualization" id="stack-visualization" style="display: none;">
+                <h2>Stack</h2>
+                <div class="stack" id="stack"></div>
+                <button id="push-btn">Push</button>
+                <button id="pop-btn">Pop</button>
+            </div>
+
+            <div class="visualization" id="queue-visualization" style="display:none;">
+                <h2>Queue</h2>
+                <div class="queue" id="queue"></div>
+                <button id="enqueue-btn">Enqueue</button>
+                <button id="dequeue-btn">Dequeue</button>
+            </div>
+
+            <div class="visualization" id="linked-list-visualization" style="display: none;">
+                <h2>Linked List</h2>
+                <div class="linked-list" id="linked-list"></div>
+                <button id="add-node-list-btn">Add Node</button>
+                <button id="remove-node-btn">Remove Node</button>
+            </div>
+
+            <div class="visualization" id="binary-tree-visualization" style="display: none;">
+                <h2>Binary Tree</h2>
+                <div class="binary-tree" id="binary-tree"></div>
+                <button id="add-node-tree-btn">Add Node</button>
+                <button id="traverse-tree-btn">Traverse Tree</button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
