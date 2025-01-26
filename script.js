@@ -1,6 +1,6 @@
 const arrayBtn = document.getElementById('array-btn');
 const stackBtn = document.getElementById('stack-btn');
-const queueBtn = document.getElementById('stack-btn');
+const queueBtn = document.getElementById('queue-btn');
 const linkedListBtn = document.getElementById('linked-list-btn');
 const binaryTreeBtn = document.getElementById('binary-tree-btn');
 
