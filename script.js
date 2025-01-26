@@ -169,5 +169,82 @@ removeNodeBtn.addEventListener("click", removeNodeFromList);
 function updateLinkedList() {
     const linkedListDiv = document.getElementById('linked-list');
     linkedListDiv.innerHtml = linkedList
-        .map()
+        .map(node => `<div class="element">${node.value}</div>`)
+        .join('<span>→</span>')
 }
+
+class TreeNode {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+function addNodeToTree() {
+    const value = prompt("Enter a value to add to the binary tree:");
+    if (value) {
+        const newNode = new TreeNode(value);
+        if (!binaryTree) {
+            binaryTree = newNode;
+        } else {
+            insertIntoTree(binaryTree, newNode);
+        }
+        updateBinaryTree();
+    }
+}
+
+addNodeTreeBtn.addEventListener("click", addNodeToTree);
+
+function insertIntoTree(root, newNode) {
+    if (newNode.value < root.value) {
+        if (!root.left) {
+            root.left = newNode;
+        } else {
+            insertIntoTree(root.left, newNode);
+        }
+    } else {
+        if (!root.right) {
+            root.right = newNode;
+        } else {
+            insertIntoTree(root.right, newNode);
+        }
+    }
+}
+
+function updateBinaryTree() {
+    const binaryTreeDiv = document.getElementById('binary-tree');
+    binaryTreeDiv.innerHTML = renderTree(binaryTree);
+}
+
+function renderTree(node) {
+    if (!node) return '';
+    return `
+        <div class="tree-node">
+            <div class="value">${node.value}</div>
+            <div class="children">
+                ${renderTree(node.left)}
+                ${renderTree(node.right)}
+            </div>    
+        </div> 
+    `;
+}
+
+function traverseTree() {
+    if (!binaryTree) {
+        alert("Binary Tree is empty!");
+    } else {
+        alerrt("Tree traversal visualization is still under construction!")
+    }
+}
+
+traverseTreeBtn.addEventListener("click", traverseTree);
+
+function goHome() {
+    document.querySelectorAll(".visualization").forEach(div => div.style.display = "none");
+    document.querySelectorAll(".selector-button").forEach(btn => btn.style.display = "block");
+    homeBtn.style.display = "none";
+    console.log("home button pressed");
+}
+
+homeBtn.addEventListener("click", goHome);
