@@ -51,3 +51,123 @@ binaryTreeBtn.addEventListener('click', () => {
     showVisualization('binary-tree');
 });
 
+function addToArray() {
+    const value = prompt("ENter a value to add:");
+    if (value) {
+        array.push(value);
+        updateArray();
+    }
+}
+
+arrayAddBtn.addEventListener('click', addToArray);
+
+function removeFromArray() {
+    if (array.length > 0) {
+        array.pop();
+        updateArray();
+    } else {
+        alert('Array is empty!');
+    }
+}
+
+arrayRemoveBtn.addEventListener('click', removeFromArray);
+
+function updateArray() {
+    const arrayDiv = document.getElementById('array');
+    arrayDiv.innerHTML = array.map(item => `<div class="element">${item}</div>`).join('');
+}
+
+function pushToStack() {
+    const value = prompt("Enter a value to push:");
+    if (value) {
+        stack.push(value);
+        updateStack;
+    }
+}
+
+pushBtn.addEventListener('click', pushToStack);
+
+function popFromStack() {
+    if (stack.length > 0) {
+        stack.pop();
+        updateStack();
+    } else {
+        alert('Stack is empty!');
+    }
+}
+
+popBtn.addEventListener('click', popFromStack);
+
+function updateStack() {
+    const stackDiv = document.getElementById('stack');
+    stackDiv.innerHtml = stack.map(item => `<div class = "element">${item}</div>`).reverse.join('');
+}
+
+function enqueue() {
+    const value = prompt("Enter a value to enqueue:");
+    if (value) {
+        queue.push(value);
+        updateQueue();
+    }
+}
+
+enqueueBtn.addEventListener('click', enqueue);
+
+function dequeue() {
+    if (queue.length > 0) {
+        queue.shift();
+        updateQueue();
+    } else {
+        alert('Queue is empty!');
+    }
+}
+
+dequeueBtn.addEventListener('click', dequeue);
+
+function updateQueue() {
+    const queueDiv = document.getElementById('queue');
+    queueDiv.innerHtml = queue.map(item => `<div class = "element">${item}</div>`).join('');
+}
+
+class LinkedListNode {
+    constructor(value) {
+        this.value = value;
+        this.next = null;
+    }
+}
+
+function addNodeToList() {
+    const value = promt("Enter a value to add to the linked list:");
+    if (value) {
+        const newNode = new LinkedListNode(value);
+        if (!linkedList.length) {
+            linkedList.push(newNode);
+        } else {
+            linkedList[linkedList.length - 1].next = newNode;
+            linkedList.push(newNode);
+        }
+        updateLinkedList();
+    }
+}
+
+addNodeListBtn.addEventListener('click', addNodeToList);
+
+function removeNodeFromList() {
+    if (linkedList.length > 0) {
+        linkedList.pop();
+        if (linkedList.length > 0) {
+            linkedList[linkedList.length - 1].next = null;
+        }
+        updateLinkedList();
+    } else {
+        alert("Linked List is empty!");
+    }
+}
+
+removeNodeBtn.addEventListener("click", removeNodeFromList);
+
+function updateLinkedList() {
+    const linkedListDiv = document.getElementById('linked-list');
+    linkedListDiv.innerHtml = linkedList
+        .map()
+}
