@@ -16,3 +16,38 @@ const addNodeTreeBtn = document.getElementById('add-node-tree-btn');
 const traverseTreeBtn = document.getElementById('traverse-tree-btn');
 
 const homeBtn = document.getElementById('home-btn');
+
+let array = [];
+let stack = [];
+let queue = [];
+let linkedList = [];
+let binaryTree = null;
+
+function showVisualization(type) {
+    document.querySelectorAll('.visualization').forEach(div => div.style.display = 'none');
+    document.querySelectorAll('.selector-button').forEach(btn => btn.style.display = 'none');
+    document.getElementById(`${type}-visualization`).style.display = 'block';
+    homeBtn.style.display = 'block';
+    console.log('showing visualization');
+}
+
+arrayBtn.addEventListener("click" , () => {
+    showVisualization('array');
+});
+
+stackBtn.addEventListener("click", () => {
+    showVisualization('stack');
+});
+
+queueBtn.addEventListener('click', () => {
+    showVisualization('queue');
+});
+
+linkedListBtn.addEventListener('click' , () => {
+    showVisualization('linked-list');
+});
+
+binaryTreeBtn.addEventListener('click', () => {
+    showVisualization('binary-tree');
+});
+
