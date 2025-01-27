@@ -74,14 +74,18 @@ arrayRemoveBtn.addEventListener('click', removeFromArray);
 
 function updateArray() {
     const arrayDiv = document.getElementById('array');
-    arrayDiv.innerHTML = array.map(item => `<div class="element">${item}</div>`).join('');
+    if (array.length === 0) {
+        arrayDiv.innerHTML = '<div class="empty-state">Array is empty</div>';
+    } else {
+        arrayDiv.innerHTML = array.map(item => `<div class="element">${item}</div>`).join('');
+    }
 }
 
 function pushToStack() {
     const value = prompt("Enter a value to push:");
     if (value) {
         stack.push(value);
-        updateStack;
+        updateStack();
     }
 }
 
@@ -100,7 +104,7 @@ popBtn.addEventListener('click', popFromStack);
 
 function updateStack() {
     const stackDiv = document.getElementById('stack');
-    stackDiv.innerHtml = stack.map(item => `<div class = "element">${item}</div>`).reverse.join('');
+    stackDiv.innerHTML = stack.map(item => `<div class = "element">${item}</div>`).reverse().join('');
 }
 
 function enqueue() {
@@ -126,7 +130,7 @@ dequeueBtn.addEventListener('click', dequeue);
 
 function updateQueue() {
     const queueDiv = document.getElementById('queue');
-    queueDiv.innerHtml = queue.map(item => `<div class = "element">${item}</div>`).join('');
+    queueDiv.innerHTML = queue.map(item => `<div class = "element">${item}</div>`).join('');
 }
 
 class LinkedListNode {
@@ -137,7 +141,7 @@ class LinkedListNode {
 }
 
 function addNodeToList() {
-    const value = promt("Enter a value to add to the linked list:");
+    const value = prompt("Enter a value to add to the linked list:");
     if (value) {
         const newNode = new LinkedListNode(value);
         if (!linkedList.length) {
@@ -150,7 +154,7 @@ function addNodeToList() {
     }
 }
 
-addNodeListBtn.addEventListener('click', addNodeToList);
+addNodeListBtn.addEventListener("click", addNodeToList);
 
 function removeNodeFromList() {
     if (linkedList.length > 0) {
@@ -168,7 +172,7 @@ removeNodeBtn.addEventListener("click", removeNodeFromList);
 
 function updateLinkedList() {
     const linkedListDiv = document.getElementById('linked-list');
-    linkedListDiv.innerHtml = linkedList
+    linkedListDiv.innerHTML = linkedList
         .map(node => `<div class="element">${node.value}</div>`)
         .join('<span>→</span>')
 }
@@ -230,11 +234,21 @@ function renderTree(node) {
     `;
 }
 
+function inOrderTraversal(node, result = []) {
+    if (node) {
+        inOrderTraversal(node.left, result);
+        result.push(node.value);
+        inOrderTraversal(node.right, result);
+    }
+    return result;
+}
+
 function traverseTree() {
     if (!binaryTree) {
         alert("Binary Tree is empty!");
     } else {
-        alerrt("Tree traversal visualization is still under construction!")
+        const result = inOrderTraversal(binaryTree);
+        alert("In-order traversal: " + result.join(", "));
     }
 }
 
